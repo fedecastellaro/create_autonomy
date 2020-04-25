@@ -36,7 +36,9 @@ def get_uid():
     return os.getuid()
 
 def get_user():
-    return os.getlogin()
+    import pwd
+    getlogin = lambda: pwd.getpwuid(os.getuid())[0]
+    return getlogin()
 
 def create_directory(directory):
     run_command("mkdir -p {}".format(directory))
