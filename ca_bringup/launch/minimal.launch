@@ -5,7 +5,17 @@
   <arg name="raspicam_receiver_IP" default="" doc="Raspicam client IP"/>
   <arg name="laser" default="$(optenv LASER)" doc="Laser for mapping the environment"/>
 
+  <arg name="rviz" default="$(optenv RVIZ false)" doc="Flag to use RViz"/>
+  <arg name="rviz_config" value="$(optenv RVIZ_CONFIG)" doc="RViz configuration file"/>
+
   <include file="$(find ca_node)/launch/create_2.launch"/>
+
+  <!-- RViz -->
+  <!-- TODO: HAVE A PLACE IN COMMON WITH GAZEBO -->
+  <include if="$(eval arg('rviz') or arg('rviz_config')!='' )"
+            file="$(find ca_tools)/launch/rviz.launch">
+    <arg name="config_file" value="$(arg rviz_config)"/>
+  </include>
 
   <!-- raspicam -->
   <include if="$(eval arg('raspicam_receiver_IP') != '')" file="$(find ca_visual_odometry)/launch/raspicam_stream.launch">
