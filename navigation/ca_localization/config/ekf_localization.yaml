@@ -56,9 +56,9 @@ publish_acceleration: false
 #     3a. Set your "world_frame" to your map_frame value
 #     3b. MAKE SURE something else is generating the odom->base_link transform. Note that this can even be another state
 #         estimation node from robot_localization! However, that instance should *not* fuse the global data.
-odom_frame: odom            # Defaults to "odom" if unspecified
-base_link_frame: base_link  # Defaults to "base_link" if unspecified
-world_frame: odom           # Defaults to the value of odom_frame if unspecified
+odom_frame: /create1_tf/odom            # Defaults to "odom" if unspecified
+base_link_frame: /create1_tf/base_link  # Defaults to "base_link" if unspecified
+world_frame: /create1_tf/odom           # Defaults to the value of odom_frame if unspecified
 #map_frame: map              # Defaults to "map" if unspecified
 
 # The filter accepts an arbitrary number of inputs from each input message type (nav_msgs/Odometry,
@@ -66,7 +66,7 @@ world_frame: odom           # Defaults to the value of odom_frame if unspecified
 # sensor_msgs/Imu). To add an input, simply append the next number in the sequence to its "base" name, e.g., odom0,
 # odom1, twist0, twist1, imu0, imu1, imu2, etc. The value should be the topic name. These parameters obviously have no
 # default values, and must be specified.
-odom0: /odom
+odom0: /create1/odom
 
 # Each sensor reading updates some or all of the filter's state. These options give you greater control over which
 # values from each measurement are fed to the filter. For example, if you have an odometry message as input, but only
@@ -91,7 +91,7 @@ odom0_queue_size: 5
 # [ADVANCED] Large messages in ROS can exhibit strange behavior when they arrive at a high frequency. This is a result
 # of Nagle's algorithm. This option tells the ROS subscriber to use the tcpNoDelay option, which disables Nagle's
 # algorithm.
-odom0_nodelay: true
+odom0_nodelay: false
 
 # [ADVANCED] When measuring one pose variable with two sensors, a situation can arise in which both sensors under-
 # report their covariances. This can lead to the filter rapidly jumping back and forth between each measurement as they
@@ -109,28 +109,28 @@ odom0_differential: true
 # integrating it. If you simply want your measurements to start at 0 for a given sensor, set this to true.
 odom0_relative: false
 
-pose0: /angle
-pose0_config: [false, false, true,
-              false, false, false,
-              false, false, false,
-              false, false, false,
-              false, false, false]
-pose0_queue_size: 5
-pose0_nodelay: true
-pose0_differential: true
-pose0_relative: false
+# pose0: /angle
+# pose0_config: [false, false, true,
+#               false, false, false,
+#               false, false, false,
+#               false, false, false,
+#               false, false, false]
+# pose0_queue_size: 5
+# pose0_nodelay: true
+# pose0_differential: true
+# pose0_relative: false
 
-# imu0: /imu/data
-# imu0_config: [false, false, false,
-#              false, false, true,
-#              false, false, false,
-#              false, false, true,
-#              true, false, false]
-# imu0_queue_size: 10
-# imu0_nodelay: false
-# imu0_differential: false
-# imu0_relative: true
-# imu0_remove_gravitational_acceleration: false
+imu0: /android/imu
+imu0_config: [false, false, false,
+             false, false, true,
+             false, false, false,
+             false, false, true,
+             true, false, false]
+imu0_queue_size: 10
+imu0_nodelay: false
+imu0_differential: false
+imu0_relative: true
+imu0_remove_gravitational_acceleration: true
 
 process_noise_covariance: [0.05,  0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
                               0,    0.05,  0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,

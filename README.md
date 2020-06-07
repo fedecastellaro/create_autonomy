@@ -31,3 +31,10 @@ This package wraps the C++ library [libcreate][libcreate], which uses iRobot's [
 
 [libcreate]:  https://github.com/RoboticaUtnFrba/libcreate
 [oi_spec]:  https://www.adafruit.com/datasheets/create_2_Open_Interface_Spec.pdf
+
+roslaunch ca_bringup complete.launch
+roslaunch ca_tools keyboard_teleop.launch
+roslaunch ca_tools rviz.launch config_file:=localization
+
+http://wiki.ros.org/rviz_imu_plugin
+https://roverrobotics.com/blogs/guides/fusing-imu-encoders-with-ros-robot-localization

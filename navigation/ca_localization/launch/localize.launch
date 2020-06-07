@@ -1,4 +1,8 @@
 <launch>
+  <arg name="robot_id"  default="$(optenv ID 1)"      doc="Unique identifier of the robot [1-Inf.)"/>
+  <arg name="ns"        value="create$(arg robot_id)" doc="Namespace of the robot. By default: create1"/>
+  <arg name="tf_prefix" value="$(arg ns)_tf"          doc="Tf prefix"/>
+
   <arg name="use_nodelets"    default="false" />
   <arg name="nodelet_manager" default="$optenv robot_localization_NODELET_MANAGER robot_localization_nodelet_manager)" />
 
@@ -20,9 +24,7 @@
     <rosparam command="load" file="$(find ca_localization)/config/ekf_localization.yaml" />
   </node>
 
-  <!-- RViz -->
-  <arg name="rviz" default="false"/>
-  <include if="$(arg rviz)" file="$(find ca_tools)/launch/rviz.launch">
-    <arg name="config_file" value="localization"/>
-  </include>
+  <!-- Static transform for the phone -->
+  <node pkg="tf" type="static_transform_publisher" name="imu_static_tf"
+        args="0 0 0 0 0 0 $(arg tf_prefix)/nvidia_jetson_nano_link /imu 20"/>
 </launch>

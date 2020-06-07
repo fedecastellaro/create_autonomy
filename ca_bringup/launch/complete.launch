@@ -13,6 +13,9 @@
     <arg name="robot_id" value="$(arg robot_id)"/>
   </include>
 
+  <!-- Localization node -->
+  <include file="$(find ca_localization)/launch/localize.launch"/>
+
   <group ns="$(arg ns)">
     <!-- Use depthimage_to_laserscan only if it's not using the rplidar -->
     <include if="$(eval arg('laser')!='rplidar')"
