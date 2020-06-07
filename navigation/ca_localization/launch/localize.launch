@@ -34,7 +34,7 @@
         args="0 0 0 0 0 0 $(arg tf_prefix)/nvidia_jetson_nano_link /imu 20"/>
 
   <!--  Start laser odometry node  -->
-  <node pkg="laser_scan_matcher" type="laser_scan_matcher_node" name="laser_scan_matcher_node" output="screen">
+  <!-- <node pkg="laser_scan_matcher" type="laser_scan_matcher_node" name="laser_scan_matcher_node" output="screen">
     <param name="fixed_frame" value = "$(arg tf_prefix)/odom"/>
     <param name="base_frame" value="$(arg tf_prefix)/base_link"/>
     <param name="publish_tf" value="false"/>
@@ -46,5 +46,5 @@
     <remap from="/pose_with_covariance_stamped" to="scan_match_pose"/>
     <remap from="pose2D" to="scan_match_pose2d"/>
     <remap from="/imu/data" to="/android/imu"/>
-  </node>
+  </node> -->
 </launch>
