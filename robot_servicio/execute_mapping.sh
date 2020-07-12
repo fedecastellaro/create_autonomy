@@ -1,0 +1,1 @@
+GUI=false LOCALIZATION=slam RVIZ_CONFIG=navigation LASER=rplidar roslaunch robot_servicio ejecutable.launch

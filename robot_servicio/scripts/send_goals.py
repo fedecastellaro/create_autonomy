@@ -1,65 +1,55 @@
 #!/usr/bin/env python
 
 import rospy
-from geometry_msgs.msg import Pose, Quaternion
-from tf.transformations import quaternion_from_euler
+import scanf
+from std_msgs.msg import String
 
 
 class send_goals():
     def __init__(self):
-        self.pi = 3.1416
+        self.sec_1_table_1 = "('1',)"
+        self.goals = rospy.Publisher('/create1/move_base_goals', String, queue_size=10)
 
-        sec_1_table_1 = Pose()
-        self.load_position(sec_1_table_1, 0, 4.5, 180)
-        sec_1_table_2 = Pose()
-        self.load_position(sec_1_table_2, -2, 4.5, 180)
-        sec_1_table_3 = Pose()
-        self.load_position(sec_1_table_3, -3.5, 4.5, 180)
+        rospy.sleep(5)  # wait to be ready for publish
+        r = rospy.Rate(1) # 1 Hz
 
-        sec_2_table_left = Pose()
-        self.load_position(sec_2_table_left, 5, 0, 14)
-        sec_2_table_right = Pose()
-        self.load_position(sec_2_table_right, -2.5, 0, 14)
-
-        sec_3_table_small_1 = Pose()
-        self.load_position(sec_3_table_small_1, 4.8, -1, -90)
-        sec_3_table_small_2 = Pose()
-        self.load_position(sec_3_table_small_2, 4.8, -5, -90)
-        sec_3_table_big = Pose()
-        self.load_position(sec_3_table_big, 4.8, -2.5, -90)
-        
-        self.goals = rospy.Publisher('/create1/move_base_goals', Pose, queue_size=10)
-
-        rospy.sleep(1) # wait to be ready for publish
-        r = rospy.Rate(0.1) # 0.1hz
+        print_menu()
 
         while not rospy.is_shutdown():
-            self.goals.publish(sec_1_table_1)
-            r.sleep()
-            self.goals.publish(sec_1_table_2)
-            r.sleep()
-            self.goals.publish(sec_1_table_3)
-            r.sleep()
-            self.goals.publish(sec_2_table_left)
-            r.sleep()
-            self.goals.publish(sec_2_table_right)
-            r.sleep()
-            self.goals.publish(sec_3_table_small_1)
-            r.sleep()
-            self.goals.publish(sec_3_table_small_2)
-            r.sleep()
-            self.goals.publish(sec_3_table_big)
+            string_read = scanf.scanf("%s")
+
+            int_read =  int(string_read[0])
+
+            if (int_read == 1):
+                self.goals.publish("sec_1_table_1")
+            elif (int_read == 2):
+                self.goals.publish("sec_1_table_2")
+            elif (int_read == 3):
+                self.goals.publish("sec_1_table_3")
+            elif (int_read == 4):
+                self.goals.publish("sec_2_table_left")
+            elif (int_read == 5):
+                self.goals.publish("sec_2_table_right")
+            elif (int_read == 6):
+                self.goals.publish("sec_3_table_small_1")
+            elif (int_read == 7):
+                self.goals.publish("sec_3_table_small_2")
+            elif (int_read == 8):
+                self.goals.publish("sec_3_table_big")
+            else:
+                rospy.logwarn("\n Invalid argument \n")
+                print_menu()
+                
             r.sleep()
 
 
-    def load_position(self, goal_pose, x, y, angle_raw):
-        q = quaternion_from_euler(0, 0, self.pi * angle_raw / 180)
-        goal_pose.position.x = x
-        goal_pose.position.y = y
-        goal_pose.orientation.x = q[0]
-        goal_pose.orientation.y = q[1]
-        goal_pose.orientation.z = q[2]
-        goal_pose.orientation.w = q[3]
+def print_menu():
+    rospy.logwarn("\n \n \n \
+        1. sec_1_table_1 \t \t 2. sec_1_table_2 \t \t 3. sec_1_table_3 \n \
+        4. sec_2_table_left \t \t 5. sec_2_table_right \n \
+        6. sec_3_table_small_1 \t 7. sec_3_table_small_2 \t 8. sec_3_table_big \n \
+        \n Opcion: ")
+
 
 
 if __name__ == '__main__':

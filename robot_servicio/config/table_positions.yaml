@@ -1,0 +1,47 @@
+sec_1_table_1: {
+  x: 0,
+  y: 4.5,
+  angle_raw: 180,
+}
+
+sec_1_table_2: {
+  x: -1.9,
+  y: 4.5,
+  angle_raw: 180,
+}
+
+sec_1_table_3: {
+  x: -3.5,
+  y: 4.5,
+  angle_raw: 180,
+}
+
+sec_2_table_left: {
+  x: -5,
+  y: 0,
+  angle_raw: 0,
+}
+
+sec_2_table_right: {
+  x: -2.5,
+  y: 0,
+  angle_raw: 0,
+}
+
+sec_3_table_small_1: {
+  x: 4.8,
+  y: -1,
+  angle_raw: -90,
+}
+
+sec_3_table_small_2: {
+  x: 4.8,
+  y: -5,
+  angle_raw: -90,
+}
+
+sec_3_table_big: {
+  x: 4.8,
+  y: -2.5,
+  angle_raw: -90,
+}

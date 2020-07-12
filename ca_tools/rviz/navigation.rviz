@@ -3,8 +3,7 @@ Panels:
     Help Height: 138
     Name: Displays
     Property Tree Widget:
-      Expanded:
-        - /Axes1
+      Expanded: ~
       Splitter Ratio: 0.5
     Tree Height: 344
   - Class: rviz/Selection
@@ -25,7 +24,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: ""
+    SyncSource: LaserScan
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -127,7 +126,7 @@ Visualization Manager:
       Draw Behind: false
       Enabled: true
       Name: Local Costmap
-      Topic: /create1/move_base/local_costmap/costmap
+      Topic: /create1/move_base/global_costmap/costmap
       Unreliable: false
       Use Timestamp: false
       Value: true
@@ -317,7 +316,7 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.009999999776482582
       Style: Flat Squares
-      Topic: /create1/laser/scan
+      Topic: /create1/rplidar/scan
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
@@ -413,7 +412,7 @@ Visualization Manager:
   Value: true
   Views:
     Current:
-      Angle: 6.2765936851501465
+      Angle: 6.306574821472168
       Class: rviz/TopDownOrtho
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
@@ -423,11 +422,11 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Scale: 110.78874206542969
+      Scale: 145.27012634277344
       Target Frame: create1_tf/base_footprint
       Value: TopDownOrtho (rviz)
-      X: 0.5590792298316956
-      Y: 0.6026081442832947
+      X: 0.13183219730854034
+      Y: -0.41832664608955383
     Saved: ~
 Window Geometry:
   Displays:

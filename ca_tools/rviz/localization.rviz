@@ -5,9 +5,6 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Odometry1/Shape1
-        - /Axes1
-        - /LaserScan1
-        - /LaserScan1/Status1
       Splitter Ratio: 0.5
     Tree Height: 344
   - Class: rviz/Selection
@@ -352,6 +349,32 @@ Visualization Manager:
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
+    - Alpha: 0.699999988079071
+      Class: rviz/Map
+      Color Scheme: map
+      Draw Behind: false
+      Enabled: true
+      Name: Map
+      Topic: /create1/move_base/local_costmap/costmap
+      Unreliable: false
+      Use Timestamp: false
+      Value: true
+    - Alpha: 1
+      Arrow Length: 0.30000001192092896
+      Axes Length: 0.30000001192092896
+      Axes Radius: 0.009999999776482582
+      Class: rviz/PoseArray
+      Color: 255; 25; 0
+      Enabled: true
+      Head Length: 0.07000000029802322
+      Head Radius: 0.029999999329447746
+      Name: WayPoints
+      Shaft Length: 0.23000000417232513
+      Shaft Radius: 0.009999999776482582
+      Shape: Arrow (Flat)
+      Topic: /waypoints
+      Unreliable: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -380,25 +403,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 13.281335830688477
+      Distance: 18.516984939575195
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.4858136773109436
-        Y: 1.2641547918319702
-        Z: -1.868991494178772
+        X: 2.5765209197998047
+        Y: 0.002938445657491684
+        Z: -4.218800067901611
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.3447965383529663
+      Pitch: 1.4497963190078735
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 1.6753971576690674
+      Yaw: 4.6854143142700195
     Saved: ~
 Window Geometry:
   Displays:
